@@ -6,19 +6,19 @@
     <% end %>
 </p>
 <p>
-    <%= f.text_area :display_name, placeholder: 'enter display name' %>
+    <%= f.text_field :display_name, placeholder: 'enter display name' %>
     <% if @user.errors.messages[:display_name].any? %>
     <span class="error"><%= @user.errors.messages[:display_name][0] %></span>
     <% end %>
 </p>
 <p>
-    <%= f.text_area :password, placeholder: 'enter password' %>
+    <%= f.text_field :password, placeholder: 'enter password' %>
     <% if @user.errors.messages[:password].any? %>
     <span class="error"><%= @user.errors.messages[:password][0] %></span>
     <% end %>
 </p>
 <p>
-    <%= f.text_area :password_confirmation, placeholder: 'enter password confirmation' %>
+    <%= f.text_field :password_confirmation, placeholder: 'enter password confirmation' %>
     <% if @user.errors.messages[:password_confirmation].any? %>
     <span class="error"><%= @user.errors.messages[:password_confirmation][0] %></span>
     <% end %>
