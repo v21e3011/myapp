@@ -1,18 +1,17 @@
-<div class='d-flex justify-content-end mb-2'>
-    <%= link_to t('.signout'), 
-    session_path(session[:user_id]), 
-    method: :delete, 
-    class: 'btn btn-sm btn-primary mr-2' %>
-    <%= link_to t('.signup'), new_user_path, class: 'btn btn-sm btn-secondary' %>
-</div>
-<% if User.all.any? %>
-    <%= form_for :signin, url: sessions_path, html: {class: 'd-flex justify-content-end signin-form'} do |f| %>
-        <%= f.text_field :signin_name, placeholder: 'signin name', class: 'form-control form-control-sm' %>
-        <%= f.text_field :password, placeholder: 'password', class: 'form-control form-control-sm' %>
-        <%= f.submit t('.signin'), class: 'btn btn-sm btn-primary' %>
-    <% end %>
+<% if session[:user_id] %>
+    <div class='d-flex justify-content-end mb-2'>
+        <%= link_to t('.signout'), session_path(session[:user_id]), method: :delete, class: 'btn btn-sm btn-primary mr-2' %>
+        <%= link_to t('.signup'), new_user_path, class: 'btn btn-sm btn-secondary' %>
+    </div>
 <% else %>
-<%= link_to t('.signup'), new_user_path, class: 'btn btn-sm btn-secondary' %>
+    <% if User.all.any? %>
+        <%= form_for :signin, url: sessions_path, html: {class: 'd-flex justify-content-end signin-form'} do |f| %>
+            <%= f.text_field :signin_name, placeholder: 'signin name', class: 'form-control form-control-sm' %>
+            <%= f.text_field :password, placeholder: 'password', class: 'form-control form-control-sm' %>
+            <%= f.submit t('.signin'), class: 'btn btn-sm btn-primary' %>
+        <% end %>
+    <% else %>
+    <%= link_to t('.signup'), new_user_path, class: 'btn btn-sm btn-secondary' %>
+    <% end %>
 <% end %>
-
 
