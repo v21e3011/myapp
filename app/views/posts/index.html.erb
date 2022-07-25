@@ -1,12 +1,11 @@
 <div>
     <%= render 'signin' %>
-    <% if session[:user_id] %>
+    <% if current_user %>
         <%= button_to t('.add_new'), new_post_path, method: :get, class: 'btn btn-sm btn-primary' %>
     <% end %>
 </div>
 <div class="d-flex justify-content-between">
     <h2>My Post</h2>
-    
         
 </div>
 <ul class="list-group mt-2">
@@ -23,14 +22,16 @@
                     <%= l(post.created_at, format: :long) %>
                 </span>
             </div>
-            <div class="dropdown">
-                <button class="btn btn-sm btn-link dropdown-toggle p-0" data-toggle="dropdown" >
-                </button>
-                <div class="dropdown-menu" >
-                    <%= link_to t('.delete'), post_path(post), method: :delete, class: 'dropdown-item', data: {confirm: 'Sure?'} %>
-                    <%= link_to t('.edit'), edit_post_path(post), class: 'dropdown-item' %>
+            <% if current_user && current_user.id == post.user_id %>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-link dropdown-toggle p-0" data-toggle="dropdown" >
+                    </button>
+                    <div class="dropdown-menu" >
+                        <%= link_to t('.delete'), post_path(post), method: :delete, class: 'dropdown-item', data: {confirm: 'Sure?'} %>
+                        <%= link_to t('.edit'), edit_post_path(post), class: 'dropdown-item' %>
+                    </div>
                 </div>
-            </div>
+            <% end %>
         </li>
     <% end %>
 </ul>

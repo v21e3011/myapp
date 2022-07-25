@@ -97,6 +97,8 @@ GEM
       racc (~> 1.4)
     popper_js (1.16.0)
     puma (3.12.6)
+    pundit (2.2.0)
+      activesupport (>= 3.0.0)
     racc (1.6.0)
     rack (2.2.3)
     rack-test (0.6.3)
@@ -193,6 +195,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   puma (~> 3.0)
+  pundit
   rails (~> 5.0.0)
   sass-rails (~> 5.0)
   spring

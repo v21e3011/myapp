@@ -6,7 +6,7 @@
 #  signin_name     :string
 #  display_name    :string
 #  password_digest :string
-#  status          :string
+#  status          :string           default("available")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
